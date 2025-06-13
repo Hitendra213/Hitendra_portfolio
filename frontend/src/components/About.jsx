@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import '../styles/About.css';
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:5000';
+// const BASE_URL = 'http://localhost:5000';
+const BASE_URL = 'https://hitendra-portfolio.onrender.com';
 
 const About = () => {
   const [aboutData, setAboutData] = useState({

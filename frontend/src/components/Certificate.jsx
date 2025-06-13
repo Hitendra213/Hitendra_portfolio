@@ -7,7 +7,8 @@ const Certificate = () => {
   const [error, setError] = useState(null);
 
   // Explicit backend URL
-  const API_BASE_URL = 'http://localhost:5000';
+  // const API_BASE_URL = 'http://localhost:5000';
+  const API_BASE_URL = 'https://hitendra-portfolio.onrender.com';
 
   const fetchCertificates = async () => {
     try {
