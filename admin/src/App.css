@@ -1,0 +1,121 @@
+/* src/styles/App.css */
+:root {
+  --sidebar-closed-width: 80px;
+  --sidebar-expanded-width: 280px;
+  --sidebar-closed-width-mobile: 60px;
+  --sidebar-expanded-width-mobile: 240px;
+  --content-gap: 12px;
+  --toggle-button-size: 40px;
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: calc(var(--sidebar-closed-width) + var(--content-gap));
+  width: calc(100% - var(--sidebar-closed-width) - var(--content-gap));
+  transition: margin-left 0.3s ease, width 0.3s ease;
+  position: relative;
+  box-sizing: border-box;
+  padding-top: calc(var(--toggle-button-size) + 16px); /* Space for toggle button */
+}
+
+/* Sidebar hover state (desktop) */
+.sidebar:hover ~ .main-content {
+  margin-left: calc(var(--sidebar-expanded-width) + var(--content-gap));
+  width: calc(100% - var(--sidebar-expanded-width) - var(--content-gap));
+}
+
+/* Sidebar toggle button */
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  width: var(--toggle-button-size);
+  height: var(--toggle-button-size);
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 2000;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+  background: #1e40af;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .main-content {
+    margin-left: calc(var(--sidebar-closed-width-mobile) + var(--content-gap));
+    width: calc(100% - var(--sidebar-closed-width-mobile) - var(--content-gap));
+  }
+
+  .sidebar:hover ~ .main-content {
+    margin-left: calc(var(--sidebar-expanded-width-mobile) + var(--content-gap));
+    width: calc(100% - var(--sidebar-expanded-width-mobile) - var(--content-gap));
+  }
+}
+
+@media (max-width: 767px) {
+  .main-content {
+    margin-left: calc(var(--sidebar-closed-width-mobile) + var(--content-gap));
+    width: calc(100% - var(--sidebar-closed-width-mobile) - var(--content-gap));
+  }
+
+  .sidebar:hover ~ .main-content {
+    margin-left: calc(var(--sidebar-expanded-width-mobile) + var(--content-gap));
+    width: calc(100% - var(--sidebar-expanded-width-mobile) - var(--content-gap));
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: var(--sidebar-expanded-width-mobile);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.is-open {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    transition: none; /* Prevent content shift on mobile */
+  }
+
+  .main-content.sidebar-open {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .sidebar:hover ~ .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .sidebar-toggle {
+    display: block;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .main-content,
+  .sidebar,
+  .sidebar:hover ~ .main-content,
+  .sidebar.is-open {
+    transition: none;
+  }
+}

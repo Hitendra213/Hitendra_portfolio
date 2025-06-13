@@ -1,0 +1,293 @@
+/* src/styles/AdminContact.css */
+:root {
+  --primary-color: #2563eb;
+  --primary-hover: #1e40af;
+  --success-color: #22c55e;
+  --success-hover: #16a34a;
+  --danger-color: #ef4444;
+  --danger-hover: #dc2626;
+  --border-radius: 10px;
+  --box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  --input-bg: #f8fafc;
+}
+
+.admin-contact {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px var(--content-gap);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  box-sizing: border-box;
+  min-height: calc(100vh - var(--toggle-button-size) - 32px);
+  background: linear-gradient(to bottom, #f8fafc, #f1f5f9);
+}
+
+/* Header */
+.admin-contact-header {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.admin-contact-header h1 {
+  color: #1e293b;
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  margin-bottom: 8px;
+}
+
+.admin-contact-header p {
+  color: #64748b;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+/* Container */
+.admin-contact-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.admin-contact-container > p {
+  text-align: center;
+  color: #64748b;
+  font-size: 1.1rem;
+  margin: 32px 0;
+}
+
+/* Error message */
+.error-message {
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 12px 16px;
+  border-radius: var(--border-radius);
+  margin-bottom: 24px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+/* Contacts grid */
+.admin-contacts-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.admin-contact-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.admin-contact-card h3 {
+  color: #1e293b;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.admin-contact-email {
+  color: #4b5563;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.admin-contact-message {
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.admin-contact-date {
+  color: #64748b;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.admin-contact-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-contact-status label {
+  color: #1e293b;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.admin-contact-status select {
+  padding: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: var(--border-radius);
+  font-size: 0.95rem;
+  background: var(--input-bg);
+  transition: all 0.3s ease;
+}
+
+.admin-contact-status select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+  background: #ffffff;
+}
+
+.admin-contact-status select:disabled {
+  background: #f3f4f6;
+  cursor: not-allowed;
+}
+
+.admin-contact-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-delete {
+  padding: 8px 16px;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(to right, var(--danger-color), var(--danger-hover));
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.btn-delete:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+
+.btn-delete:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Responsive adjustments with sidebar integration */
+@media (max-width: 1024px) {
+  .admin-contact {
+    padding: 24px var(--content-gap);
+    margin-left: calc(var(--sidebar-closed-width-mobile) + var(--content-gap));
+  }
+
+  .admin-contact-header h1 {
+    font-size: 2rem;
+  }
+
+  .sidebar:hover ~ .main-content .admin-contact {
+    margin-left: calc(var(--sidebar-expanded-width-mobile) + var(--content-gap));
+  }
+}
+
+@media (max-width: 767px) {
+  .admin-contact {
+    padding: 20px var(--content-gap);
+    margin-left: calc(var(--sidebar-closed-width-mobile) + var(--content-gap));
+  }
+
+  .admin-contact-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .admin-contact-card {
+    padding: 16px;
+  }
+
+  .admin-contact-status {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .admin-contact-status select {
+    width: 100%;
+  }
+
+  .sidebar:hover ~ .main-content .admin-contact {
+    margin-left: calc(var(--sidebar-expanded-width-mobile) + var(--content-gap));
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-contact {
+    padding: 16px var(--content-gap);
+    margin-left: 0;
+    margin-top: calc(var(--toggle-button-size) + 12px);
+  }
+
+  .admin-contact-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .admin-contact-header p {
+    font-size: 1rem;
+  }
+
+  .admin-contact-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .admin-contact-email,
+  .admin-contact-message {
+    font-size: 0.9rem;
+  }
+
+  .admin-contact-date,
+  .admin-contact-status label,
+  .admin-contact-status select {
+    font-size: 0.9rem;
+  }
+
+  .btn-delete {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .main-content.sidebar-open .admin-contact {
+    margin-left: 0;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .btn-delete,
+  .admin-contact-status select {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .admin-contact {
+    background: #ffffff;
+  }
+
+  .admin-contact-header h1,
+  .admin-contact-header p,
+  .admin-contact-card h3,
+  .admin-contact-email,
+  .admin-contact-message,
+  .admin-contact-date,
+  .admin-contact-status label {
+    color: #000000;
+  }
+
+  .admin-contact-status select {
+    border: 2px solid #000000;
+    background: #ffffff;
+  }
+
+  .admin-contact-status select:focus {
+    border-color: #0000ff;
+    box-shadow: none;
+  }
+
+  .btn-delete {
+    background: #ff0000;
+  }
+}
