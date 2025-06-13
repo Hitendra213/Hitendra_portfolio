@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/AdminSkill.css';
 
-const BASE_URL = 'http://localhost:5000';
+// const BASE_URL = 'http://localhost:5000';
+const BASE_URL = 'https://hitendra-portfolio.onrender.com';
 
 const AdminSkill = () => {
   const [skills, setSkills] = useState([]);

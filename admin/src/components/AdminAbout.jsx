@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import '../styles/AdminAbout.css';
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:5000';
+// const BASE_URL = 'http://localhost:5000';
+const BASE_URL = 'https://hitendra-portfolio.onrender.com';
 
 const AdminAbout = () => {
   const [formData, setFormData] = useState({

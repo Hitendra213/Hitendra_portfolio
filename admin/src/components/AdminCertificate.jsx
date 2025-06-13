@@ -16,7 +16,8 @@ const AdminCertificate = () => {
   const [success, setSuccess] = useState(null);
 
   // Explicit backend URL
-  const API_BASE_URL = 'http://localhost:5000';
+  // const API_BASE_URL = 'http://localhost:5000';
+  const API_BASE_URL = 'https://hitendra-portfolio.onrender.com';
 
   useEffect(() => {
     fetchCertificates();
