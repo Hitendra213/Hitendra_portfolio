@@ -1,4 +1,3 @@
-# Hitendra_portfolio Website 🌟
+# Hitendra_portfolio 
 
-## liks
 - portfolio link: https://hitendrasinhmatroja.vercel.app
