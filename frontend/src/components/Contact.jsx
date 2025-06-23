@@ -97,14 +97,14 @@ const Contact = () => {
           <div className="contact-social">
             <h3>Connect with Me</h3>
             <div className="social-links">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-link">
-                LinkedIn
+              <a href="https://www.linkedin.com/in/hitendrasinh-matroja-027413290" target="_blank" rel="noopener noreferrer" className="social-link">
+                <i className="fab fa-linkedin-in"></i> LinkedIn
               </a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-link">
-                GitHub
+              <a href="https://github.com/Hitendra213" target="_blank" rel="noopener noreferrer" className="social-link">
+                <i className="fab fa-github"></i> GitHub
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-link">
-                Twitter
+              <a href="https://www.instagram.com/_hitendra_07_" target="_blank" rel="noopener noreferrer" className="social-link">
+                <i className="fab fa-instagram"></i> Instagram
               </a>
             </div>
           </div>
