@@ -7,6 +7,7 @@ import Skill from './components/Skill';
 import Blog from './components/Blog';
 import Certificate from './components/Certificate';
 import Contact from './components/Contact';
+import Footer from './components/Footer';
 import './App.css';
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/certificate" element={<Certificate />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Footer />
     </div>
   );
 };

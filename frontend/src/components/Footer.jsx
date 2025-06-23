@@ -1,75 +1,66 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
 import '../styles/Footer.css';
 
-function Footer() {
+const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="footer">
       <div className="footer-container">
-        <div className="footer-brand">
-          <span>Portfolio</span>
+        <div className="footer-content">
+          <div className="footer-contact">
+            <h3 className="footer-title">Get in Touch</h3>
+            <p>
+              Have a project in mind?{' '}
+              <a href="mailto:your.email@example.com" className="contact-link">
+                Send me an email
+              </a>
+            </p>
+          </div>
+
+          <div className="footer-social">
+            <div className="social-links">
+              <a
+                href="https://www.linkedin.com/in/hitendrasinh-matroja-027413290"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+              >
+                <i className="fab fa-linkedin-in"></i> LinkedIn
+              </a>
+              <a
+                href="https://github.com/Hitendra213"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+              >
+                <i className="fab fa-github"></i> GitHub
+              </a>
+              <a
+                href="https://www.instagram.com/_hitendra_07_"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+              >
+                <i className="fab fa-instagram"></i> Instagram
+              </a>
+            </div>
+          </div>
+
+          <div className="footer-copyright">
+            <p>© {new Date().getFullYear()} Hitendrasinh Matroja. All rights reserved.</p>
+          </div>
         </div>
-        <div className="footer-links">
-          <NavLink
-            to="/"
-            className={({ isActive }) => (isActive ? 'active-link' : '')}
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/about"
-            className={({ isActive }) => (isActive ? 'active-link' : '')}
-          >
-            About
-          </NavLink>
-          <NavLink
-            to="/project"
-            className={({ isActive }) => (isActive ? 'active-link' : '')}
-          >
-            Projects
-          </NavLink>
-          <NavLink
-            to="/skill"
-            className={({ isActive }) => (isActive ? 'active-link' : '')}
-          >
-            Skills
-          </NavLink>
-          <NavLink
-            to="/blog"
-            className={({ isActive }) => (isActive ? 'active-link' : '')}
-          >
-            Blog
-          </NavLink>
-          <NavLink
-            to="/certificate"
-            className={({ isActive }) => (isActive ? 'active-link' : '')}
-          >
-            Certificates
-          </NavLink>
-          <NavLink
-            to="/contact"
-            className={({ isActive }) => (isActive ? 'active-link' : '')}
-          >
-            Contact
-          </NavLink>
-        </div>
-        <div className="footer-social">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <i className="fab fa-github"></i>
-          </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <i className="fab fa-linkedin"></i>
-          </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-            <i className="fab fa-twitter"></i>
-          </a>
-        </div>
-        <div className="footer-copyright">
-          <p>&copy; {new Date().getFullYear()} Hitendrasinh Matroja. All rights reserved.</p>
+
+        <div className="footer-back-to-top">
+          <button onClick={scrollToTop} className="back-to-top-button" aria-label="Back to top">
+            <i className="fas fa-chevron-up"></i>
+          </button>
         </div>
       </div>
     </footer>
   );
-}
+};
 
 export default Footer;

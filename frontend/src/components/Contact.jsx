@@ -12,8 +12,7 @@ const Contact = () => {
   const [formError, setFormError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // const API_BASE_URL = 'http://localhost:5000';
-  const API_BASE_URL = 'https://hitendra-portfolio.onrender.com';
+  const API_BASE_URL = 'http://localhost:5000';
 
   const handleChange = (e) => {
     const { name, value } = e.target;
