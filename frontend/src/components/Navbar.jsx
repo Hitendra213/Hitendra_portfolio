@@ -12,21 +12,17 @@ function Navbar() {
     setIsOpen(!isOpen);
   };
 
-  // Reset isHidden on route change
   useEffect(() => {
     setIsHidden(false);
-    window.scrollTo(0, 0); // Scroll to top on route change
+    window.scrollTo(0, 0);
   }, [location.pathname]);
 
-  // Handle scroll behavior
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down and past 100px
         setIsHidden(true);
       } else if (currentScrollY < lastScrollY) {
-        // Scrolling up
         setIsHidden(false);
       }
       setLastScrollY(currentScrollY);
@@ -37,7 +33,7 @@ function Navbar() {
   }, [lastScrollY]);
 
   return (
-    <nav className={`navbar ${isHidden ? 'hidden' : ''}`}>
+    <nav className={`navbar ${isHidden ? 'hidden' : ''}`} aria-label="Main navigation">
       <div className="navbar-container">
         <div className="navbar-brand">
           <span>Portfolio</span>
@@ -48,6 +44,7 @@ function Navbar() {
               to="/"
               className={({ isActive }) => (isActive ? 'active-link' : '')}
               onClick={() => setIsOpen(false)}
+              aria-label="Home page"
             >
               Home
             </NavLink>
@@ -55,6 +52,7 @@ function Navbar() {
               to="/about"
               className={({ isActive }) => (isActive ? 'active-link' : '')}
               onClick={() => setIsOpen(false)}
+              aria-label="About page"
             >
               About
             </NavLink>
@@ -62,6 +60,7 @@ function Navbar() {
               to="/project"
               className={({ isActive }) => (isActive ? 'active-link' : '')}
               onClick={() => setIsOpen(false)}
+              aria-label="Projects page"
             >
               Projects
             </NavLink>
@@ -69,6 +68,7 @@ function Navbar() {
               to="/skill"
               className={({ isActive }) => (isActive ? 'active-link' : '')}
               onClick={() => setIsOpen(false)}
+              aria-label="Skills page"
             >
               Skills
             </NavLink>
@@ -76,6 +76,7 @@ function Navbar() {
               to="/blog"
               className={({ isActive }) => (isActive ? 'active-link' : '')}
               onClick={() => setIsOpen(false)}
+              aria-label="Blog page"
             >
               Blog
             </NavLink>
@@ -83,6 +84,7 @@ function Navbar() {
               to="/certificate"
               className={({ isActive }) => (isActive ? 'active-link' : '')}
               onClick={() => setIsOpen(false)}
+              aria-label="Certificates page"
             >
               Certificates
             </NavLink>
@@ -90,11 +92,12 @@ function Navbar() {
               to="/contact"
               className={({ isActive }) => (isActive ? 'active-link' : '')}
               onClick={() => setIsOpen(false)}
+              aria-label="Contact page"
             >
               Contact
             </NavLink>
           </div>
-          <button className="navbar-toggle" onClick={toggleMenu}>
+          <button className="navbar-toggle" onClick={toggleMenu} aria-label="Toggle navigation menu">
             <span className={isOpen ? 'toggle-icon open' : 'toggle-icon'}></span>
           </button>
         </div>

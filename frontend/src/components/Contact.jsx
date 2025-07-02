@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import '../styles/Contact.css';
 import axios from 'axios';
 
@@ -22,8 +23,7 @@ const Contact = () => {
     setFormError('');
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     setIsSubmitting(true);
     setFormStatus('');
     setFormError('');
@@ -40,7 +40,34 @@ const Contact = () => {
   };
 
   return (
-    <section className="contact" id="contact">
+    <main className="contact" id="contact">
+      <Helmet>
+        <title>Contact | Hitendrasinh Matroja - Full Stack Developer</title>
+        <meta name="description" content="Get in touch with Hitendrasinh Matroja for collaboration or inquiries about web development, MERN stack, Django, or Flutter projects." />
+        <meta name="keywords" content="contact full stack developer, Hitendrasinh Matroja, MERN stack, Django, Flutter" />
+        <meta property="og:title" content="Contact | Hitendrasinh Matroja - Full Stack Developer" />
+        <meta property="og:description" content="Reach out to Hitendrasinh Matroja for project collaborations or inquiries." />
+        <meta property="og:image" content="https://hitendrasinhmatroja.vercel.app/apple-touch-icon.png" />
+        <meta property="og:url" content="https://hitendrasinhmatroja.vercel.app/contact" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Contact | Hitendrasinh Matroja - Full Stack Developer" />
+        <meta name="twitter:description" content="Reach out to Hitendrasinh Matroja for project collaborations or inquiries." />
+        <meta name="twitter:image" content="https://hitendrasinhmatroja.vercel.app/apple-touch-icon.png" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Contact",
+            "description": "Contact page for Hitendrasinh Matroja, a Full Stack Developer.",
+            "url": "https://hitendrasinhmatroja.vercel.app/contact",
+            "mainEntity": {
+              "@type": "Person",
+              "name": "Hitendrasinh Matroja",
+              "jobTitle": "Full Stack Developer"
+            }
+          })}
+        </script>
+      </Helmet>
       <div className="contact-container">
         <h1 className="contact-title">Get in Touch</h1>
         <div className="contact-content">
@@ -48,7 +75,7 @@ const Contact = () => {
             <p>Have a question or want to collaborate? Drop me a message!</p>
             {formStatus && <p className="form-status">{formStatus}</p>}
             {formError && <p className="form-error">{formError}</p>}
-            <form onSubmit={handleSubmit}>
+            <div role="form" aria-labelledby="contact-title">
               <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input
@@ -60,6 +87,7 @@ const Contact = () => {
                   required
                   placeholder="Your Name"
                   disabled={isSubmitting}
+                  aria-required="true"
                 />
               </div>
               <div className="form-group">
@@ -73,6 +101,7 @@ const Contact = () => {
                   required
                   placeholder="Your Email"
                   disabled={isSubmitting}
+                  aria-required="true"
                 />
               </div>
               <div className="form-group">
@@ -86,31 +115,56 @@ const Contact = () => {
                   placeholder="Your Message"
                   rows="5"
                   disabled={isSubmitting}
+                  aria-required="true"
                 ></textarea>
               </div>
-              <button type="submit" className="contact-button" disabled={isSubmitting}>
+              <button
+                type="button"
+                className="contact-button"
+                onClick={handleSubmit}
+                disabled={isSubmitting}
+                aria-label="Send contact message"
+              >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
-            </form>
+            </div>
           </div>
 
           <div className="contact-social">
             <h3>Connect with Me</h3>
             <div className="social-links">
-              <a href="https://www.linkedin.com/in/hitendrasinh-matroja-027413290" target="_blank" rel="noopener noreferrer" className="social-link">
+              <a
+                href="https://www.linkedin.com/in/hitendrasinh-matroja-027413290"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+                aria-label="LinkedIn profile"
+              >
                 <i className="fab fa-linkedin-in"></i> LinkedIn
               </a>
-              <a href="https://github.com/Hitendra213" target="_blank" rel="noopener noreferrer" className="social-link">
+              <a
+                href="https://github.com/Hitendra213"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+                aria-label="GitHub profile"
+              >
                 <i className="fab fa-github"></i> GitHub
               </a>
-              <a href="https://www.instagram.com/_hitendra_07_" target="_blank" rel="noopener noreferrer" className="social-link">
+              <a
+                href="https://www.instagram.com/_hitendra_07_"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+                aria-label="Instagram profile"
+              >
                 <i className="fab fa-instagram"></i> Instagram
               </a>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </main>
   );
 };
 

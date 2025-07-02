@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import '../styles/About.css';
 import axios from 'axios';
 
@@ -19,7 +20,7 @@ const About = () => {
         const data = response.data;
         setAboutData({
           bio: data.bio || '',
-          image: data.image || 'https://via.placeholder.com/300',
+          image: data.image || 'https://hitendrasinhmatroja.vercel.app/apple-touch-icon.png',
           values: Array.isArray(data.values) ? data.values : [],
         });
       } catch (error) {
@@ -31,15 +32,39 @@ const About = () => {
   }, []);
 
   return (
-    <section className="about">
+    <main className="about">
+      <Helmet>
+        <title>About | Hitendrasinh Matroja - Full Stack Developer</title>
+        <meta name="description" content="Learn about Hitendrasinh Matroja, a Full Stack Developer with expertise in MERN stack, Django, and Flutter." />
+        <meta name="keywords" content="about full stack developer, Hitendrasinh Matroja, MERN stack, Django, Flutter" />
+        <meta property="og:title" content="About | Hitendrasinh Matroja - Full Stack Developer" />
+        <meta property="og:description" content="Discover the journey and values of Hitendrasinh Matroja, a passionate Full Stack Developer." />
+        <meta property="og:image" content={aboutData.image || 'https://hitendrasinhmatroja.vercel.app/apple-touch-icon.png'} />
+        <meta property="og:url" content="https://hitendrasinhmatroja.vercel.app/about" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "About",
+            "description": "About page of Hitendrasinh Matroja's portfolio, detailing his journey as a Full Stack Developer.",
+            "url": "https://hitendrasinhmatroja.vercel.app/about",
+            "mainEntity": {
+              "@type": "Person",
+              "name": "Hitendrasinh Matroja",
+              "jobTitle": "Full Stack Developer"
+            }
+          })}
+        </script>
+      </Helmet>
       <div className="about-container">
         <h1 className="about-title">About Me</h1>
-        <div className="about-content">
+        <article className="about-content">
           <div className="about-image">
             <img
               src={aboutData.image}
-              alt="Profile"
+              alt="Hitendrasinh Matroja Profile"
               className="profile-img"
+              loading="lazy"
             />
           </div>
           <div className="about-text">
@@ -55,14 +80,14 @@ const About = () => {
             <a
               href="/contact"
               className="about-button"
-              aria-label="Navigate to contact page"
+              aria-label="Contact Hitendrasinh"
             >
               Get in Touch
             </a>
           </div>
-        </div>
+        </article>
       </div>
-    </section>
+    </main>
   );
 };
 

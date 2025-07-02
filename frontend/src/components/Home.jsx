@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import axios from 'axios';
 import '../styles/Home.css';
 
@@ -82,7 +83,7 @@ const Home = () => {
         setData({
           about: {
             bio: aboutResponse.data.bio || 'I’m a BTech CSE student passionate about crafting innovative solutions through code. I love exploring web development, AI, and algorithms to build impactful projects.',
-            image: aboutResponse.data.image || 'https://via.placeholder.com/300',
+            image: aboutResponse.data.image || 'https://hitendrasinhmatroja.vercel.app/apple-touch-icon.png',
           },
           projects: sortedProjects,
           skills: formattedSkills,
@@ -95,14 +96,14 @@ const Home = () => {
         setData({
           about: {
             bio: 'I’m a BTech CSE student passionate about crafting innovative solutions through code. I love exploring web development, AI, and algorithms to build impactful projects.',
-            image: 'https://via.placeholder.com/300',
+            image: 'https://hitendrasinhmatroja.vercel.app/apple-touch-icon.png',
           },
           projects: [
             {
               _id: 1,
               title: 'AI Chatbot',
               description: 'A machine learning-based chatbot for real-time user interaction.',
-              image: 'https://via.placeholder.com/300',
+              image: 'https://hitendrasinhmatroja.vercel.app/apple-touch-icon.png',
               technologies: ['Python', 'TensorFlow', 'React'],
               link: '#',
             },
@@ -110,7 +111,7 @@ const Home = () => {
               _id: 2,
               title: 'Portfolio Website',
               description: 'A responsive portfolio showcasing my CSE projects.',
-              image: 'https://via.placeholder.com/300',
+              image: 'https://hitendrasinhmatroja.vercel.app/apple-touch-icon.png',
               technologies: ['React', 'Node.js', 'CSS'],
               link: '#',
             },
@@ -118,7 +119,7 @@ const Home = () => {
               _id: 3,
               title: 'Sorting Visualizer',
               description: 'An interactive tool to visualize sorting algorithms.',
-              image: 'https://via.placeholder.com/300',
+              image: 'https://hitendrasinhmatroja.vercel.app/apple-touch-icon.png',
               technologies: ['JavaScript', 'HTML', 'CSS'],
               link: '#',
             },
@@ -159,23 +160,46 @@ const Home = () => {
 
   if (loading) {
     return (
-      <section className="home animate-section">
+      <main className="home animate-section">
         <div className="loading animate-content">Loading...</div>
-      </section>
+      </main>
     );
   }
 
   if (error) {
     return (
-      <section className="home animate-section">
+      <main className="home animate-section">
         <div className="error animate-content">{error}</div>
-      </section>
+      </main>
     );
   }
 
   return (
-    <section className="home animate-section">
-      <div className="hero animate-content">
+    <main className="home animate-section">
+      <Helmet>
+        <title>Home | Hitendrasinh Matroja - Full Stack Developer</title>
+        <meta name="description" content="Welcome to Hitendrasinh Matroja's portfolio. Explore my MERN stack projects, Django applications, and Flutter mobile apps." />
+        <meta name="keywords" content="full stack developer portfolio, MERN stack projects, Django developer, Flutter apps, web development" />
+        <meta property="og:title" content="Home | Hitendrasinh Matroja - Full Stack Developer" />
+        <meta property="og:description" content="Discover Hitendrasinh Matroja's portfolio featuring MERN stack, Django, and Flutter projects." />
+        <meta property="og:image" content={data.about.image || 'https://hitendrasinhmatroja.vercel.app/apple-touch-icon.png'} />
+        <meta property="og:url" content="https://hitendrasinhmatroja.vercel.app" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Home",
+            "description": "Portfolio homepage of Hitendrasinh Matroja, showcasing full stack development projects.",
+            "url": "https://hitendrasinhmatroja.vercel.app",
+            "mainEntity": {
+              "@type": "Person",
+              "name": "Hitendrasinh Matroja",
+              "jobTitle": "Full Stack Developer"
+            }
+          })}
+        </script>
+      </Helmet>
+      <section className="hero animate-content">
         <h1 className="hero-title neon-text">Hi, I'm Hitendrasinh Matroja</h1>
         <p className="hero-subtitle">
           A <span className="highlight">Full Stack Developer</span> passionate about crafting scalable web and mobile applications using the <strong>MERN stack</strong>, <strong>Django</strong>, and modern frontend frameworks like <strong>React.js</strong> and <strong>Flutter</strong>.
@@ -183,27 +207,26 @@ const Home = () => {
         <p className="hero-subtitle">
           I specialize in building responsive user interfaces, developing RESTful APIs, and optimizing workflows using tools like <strong>Git</strong> and <strong>Android Studio</strong>. I enjoy solving real-world problems with clean, efficient code.
         </p>
-        <Link to="/contact" className="hero-button animate-button">Get in Touch</Link>
-      </div>
+        <Link to="/contact" className="hero-button animate-button" aria-label="Contact Hitendrasinh">Get in Touch</Link>
+      </section>
 
-
-      <div className="home-section about-section animate-content">
+      <section className="home-section about-section animate-content">
         <h2 className="section-title neon-text">About Me</h2>
-        <div className="about-content">
-          <img src={data.about.image} alt="Profile" className="about-image animate-image" />
+        <article className="about-content">
+          <img src={data.about.image} alt="Hitendrasinh Matroja Profile" className="about-image animate-image" loading="lazy" />
           <div className="about-text">
             <p>{data.about.bio.substring(0, 200)}...</p>
-            <Link to="/about" className="section-button animate-button">Discover My Journey</Link>
+            <Link to="/about" className="section-button animate-button" aria-label="Learn more about Hitendrasinh">Discover My Journey</Link>
           </div>
-        </div>
-      </div>
+        </article>
+      </section>
 
-      <div className="home-section projects-section animate-content">
+      <section className="home-section projects-section animate-content">
         <h2 className="section-title neon-text">Featured Projects</h2>
         <div className="projects-grid">
           {data.projects.map(project => (
-            <div key={project._id} className="project-card animate-card">
-              {project.image && <img src={project.image} alt={project.title} className="project-image animate-image" />}
+            <article key={project._id} className="project-card animate-card">
+              {project.image && <img src={project.image} alt={`${project.title} screenshot`} className="project-image animate-image" loading="lazy" />}
               <h3>{project.title}</h3>
               <p>{project.description.substring(0, 100)}...</p>
               <div className="project-tech">
@@ -211,43 +234,43 @@ const Home = () => {
                   <span key={index} className="tech-tag animate-tag">{tech}</span>
                 ))}
               </div>
-              <a href={project.link} target="_blank" rel="noopener noreferrer" className="section-button animate-button">Explore Project</a>
-            </div>
+              <a href={project.link} target="_blank" rel="noopener noreferrer" className="section-button animate-button" aria-label={`Explore ${project.title}`}>Explore Project</a>
+            </article>
           ))}
         </div>
-        <Link to="/project" className="section-button view-all animate-button">View All Projects</Link>
-      </div>
+        <Link to="/project" className="section-button view-all animate-button" aria-label="View all projects">View all projects</Link>
+      </section>
 
-      <div className="home-section skills-section animate-content">
+      <section className="home-section skills-section animate-content">
         <h2 className="section-title neon-text">My Skills</h2>
         <div className="skills-grid">
           {data.skills.map((category, index) => (
-            <div key={index} className="skill-card animate-card">
+            <article key={index} className="skill-card animate-card">
               <h3>{category.category}</h3>
               <ul className="skill-list">
                 {category.skills.map((skill, skillIndex) => (
                   <li key={skillIndex} className="skill-item animate-item">{skill.name}</li>
                 ))}
               </ul>
-            </div>
+            </article>
           ))}
         </div>
-        <Link to="/skill" className="section-button view-all animate-button">See All Skills</Link>
-      </div>
+        <Link to="/skill" className="section-button view-all animate-button" aria-label="View all skills">See All Skills</Link>
+      </section>
 
-      <div className="home-section activity-section animate-content">
+      <section className="home-section activity-section animate-content">
         <h2 className="section-title neon-text">Recent Achievements</h2>
         <div className="activity-grid">
           {data.recentActivities.map((activity, index) => (
-            <div key={activity.id} className="activity-card animate-card">
+            <article key={activity.id} className="activity-card animate-card">
               <p>{activity.action}</p>
-              <span className="activity-date animate-date">{activity.date}</span>
-            </div>
+              <time className="activity-date animate-date" dateTime={activity.date}>{activity.date}</time>
+            </article>
           ))}
         </div>
-        <Link to="/contact" className="section-button view-all animate-button">Let’s Connect</Link>
-      </div>
-    </section>
+        <Link to="/contact" className="section-button view-all animate-button" aria-label="Connect with Hitendrasinh">Let’s Connect</Link>
+      </section>
+    </main>
   );
 };
 
