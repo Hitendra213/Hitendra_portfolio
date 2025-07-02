@@ -29,7 +29,7 @@ const Footer = () => {
             <h3 className="footer-title">Get in Touch</h3>
             <p>
               Have a project in mind?{' '}
-              <a href="mailto:your.email@example.com" className="contact-link" aria-label="Email Hitendrasinh">
+              <a href="mailto:hitendrasinhmatroja21@gmail.com" className="contact-link" aria-label="Email Hitendrasinh">
                 Send me an email
               </a>
             </p>
